@@ -1,0 +1,34 @@
+# =================================================================
+# Project Configuration (for OwlMind)
+# =================================================================
+
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "owlmind"
+dynamic = ["version", "description", "license"]
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [
+    {name = "Fernando Koch", email = "fernandokoch@me.com"}
+]
+dependencies = [
+    "ollama>=0.4.0",
+    "python-dotenv>=1.0.0",
+]
+
+[project.scripts]
+owlmind = "owlmind.ui.cli:main"
+
+[tool.setuptools.dynamic]
+version = {attr = "owlmind.__version__"}
+description = {attr = "owlmind.__description__"}
+license = {attr = "owlmind.__license__"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+"*" = ["*.txt", "*.json", "*.md"]
