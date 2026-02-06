@@ -1,32 +1,63 @@
 # =================================================================
-# Project Configuration (for OwlMind)
+# Project Configuration
+# pip install -e .
+#
+# Setup git version:
+# git tag v0.1.1
+# git push --tags
 # =================================================================
 
+# =================================================================
+# Build System
+# =================================================================
 [build-system]
-requires = ["setuptools>=61.0", "wheel"]
+requires = [
+    "setuptools>=61.0",
+    "wheel",
+    "setuptools_scm[toml]>=8.0"
+]
 build-backend = "setuptools.build_meta"
 
+# =================================================================
+# Project Metadata
+# =================================================================
 [project]
-name = "owlmind"
-dynamic = ["version", "description", "license"]
+name = "graphk"
+description = "Framework for Graph-based execution and pipeline programming"
 readme = "README.md"
+version = "0.0.0"  # placeholder, overridden by setuptools_scm
+license = { text = "MIT" }
 requires-python = ">=3.10"
+
 authors = [
-    {name = "Fernando Koch", email = "fernandokoch@me.com"}
+    { name = "Fernando Koch", email = "fernandokoch@me.com" }
 ]
+
 dependencies = [
-    "ollama>=0.4.0",
-    "python-dotenv>=1.0.0",
 ]
 
-[project.scripts]
-owlmind = "owlmind.ui.cli:main"
+[project.urls]
+Repository = "https://github.com/kochf1/graphk"
+Issues = "https://github.com/kochf1/graphk/issues"
 
-[tool.setuptools.dynamic]
-version = {attr = "owlmind.__version__"}
-description = {attr = "owlmind.__description__"}
-license = {attr = "owlmind.__license__"}
 
+# =================================================================
+# CLI (only enable if CLI exists)
+# =================================================================
+# [project.scripts]
+# PACKAGE = "PACKAGE.ui.cli:main"
+
+# =================================================================
+# Git-based versioning
+# =================================================================
+[tool.setuptools_scm]
+version_scheme = "release-branch-semver"
+local_scheme = "no-local-version"
+fallback_version = "0.0.0"
+
+# =================================================================
+# Package discovery
+# =================================================================
 [tool.setuptools.packages.find]
 where = ["src"]
 

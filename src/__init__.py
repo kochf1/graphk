@@ -2,6 +2,7 @@
 GraphK - Framework for Graph-based execution and pipeline programming.
 """
 
+from importlib.metadata import version
 from .core.nodes import Gate, Node, BranchNode
 from .core.pipeline import Pipeline
 from .core.runner import Runner, Session
@@ -19,7 +20,6 @@ __all__ = [
 
 __title__ = "graphk"
 __description__ = "Framework for Graph-based execution and pipeline programming"
-__version__ = "0.1.1"
 __github__ = "https://github.com/kochf1/graphk"
 __license__ = "MIT"
 __about__ = """
@@ -29,3 +29,8 @@ with explicit control flow and runtime semantics. GraphK is UI-agnostic and
 domain-independent, serving as the foundation on which all other GraphK modules 
 and products are built.
 """
+
+try: __version__ = version(__title__)
+except: __version__ = "0.0.0"
+
+
